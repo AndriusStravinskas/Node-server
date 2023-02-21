@@ -1,17 +1,17 @@
-import * as dotenv from 'dotenv'
-dotenv.config();
-import express  from "express";
-
-const { SERVER_PORT, SERVER_DOMAIN } = process.env;
-
-if (SERVER_PORT === undefined || SERVER_DOMAIN === undefined) {
-  throw new Error("Please define constants in '.env' file");
-}
+import express from 'express';
+import morgan from 'morgan';
+import config from './config';
+import gamesRouter from './routers/games-router';
 
 const server = express();
 
-server.use(express.static('public'))
+// Middlewares
+server.use(morgan('tiny'));
+server.use(express.static('public'));
+server.use(express.json());
+server.use('/api/games', gamesRouter);
 
-server.listen(5009, () => {
-  console.log(`server is running on: http://${SERVER_DOMAIN}:${SERVER_PORT}`)
-})
+// Server init
+server.listen(config.server.port, () => {
+  console.log(`server is running on: http://${config.server.domain}:${config.server.port}`);
+});
