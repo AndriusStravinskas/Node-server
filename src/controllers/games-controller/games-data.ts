@@ -1,0 +1,223 @@
+const gamesData = [
+  {
+    id: 1,
+    title: 'Spyder-man: Miles Morales',
+    price: 23,
+    images: [
+      'http://localhost:5007/Spyder-man-Miles-Morales.webp',
+      'http://localhost:5007/Spyder-man-Miles-Morales-images.jpg',
+      'http://localhost:5007/spyder-man-miles-morales-350x200.jpg',
+    ],
+    description: 'Apsivilkite patobulintą Spider Man kostiumą ir pasiruoškite apsaugoti Niujorką.',
+    category: 'Veiksmo',
+    condition: 'Labai gera',
+    location: {
+      city: 'Kaunas',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 2,
+    title: 'God of War Ragnarök',
+    price: 46,
+    images: [
+      'http://localhost:5007/God-of-War-Ragnarök.webp',
+      'http://localhost:5007/God-of-War-Ragnarök-mobile.webp',
+      'http://localhost:5007/God-of-War-Ragnarök-350x200.jpg',
+    ],
+    description: 'Tiek kritikų, tiek įvairių žaidėjų bendruomenių liaupsių sulaukęs God of War Ragnarök giriamas ne be priežasties!',
+    category: 'Nuotykių',
+    condition: 'Labai gera',
+    location: {
+      city: 'Kaunas',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 3,
+    title: "Assassin's Creed Valhalla",
+    price: 18,
+    images: [
+      "http://localhost:5007/Assassin's-Creed-Valhalla.webp",
+      "http://localhost:5007/Assassin's-Creed-Valhalla-mobile.webp",
+      "http://localhost:5007/Assassin's-Creed-Valhalla-350x200.jpg",
+    ],
+    description: 'Ubisoft pristato Assassin‘s Creed kūrinį, kurio siužetas grįstas IX a. Anglijos istorija, tad išvysime vikingus!',
+    category: 'Veiksmo',
+    condition: 'Labai gera',
+    location: {
+      city: 'Kaunas',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 4,
+    title: 'Days Gone',
+    price: 12,
+    images: [
+      'http://localhost:5007/Days-Gone.webp',
+      'http://localhost:5007/Days-Gone-mobile.webp',
+      'http://localhost:5007/Days-Gone-350x200.jpg',
+    ],
+    description: 'Ubisoft pristato Assassin‘s Creed kūrinį, kurio siužetas grįstas IX a. Anglijos istorija, tad išvysime vikingus!',
+    category: 'Atviras pasaulis',
+    condition: 'Labai gera',
+    location: {
+      city: 'Kaunas',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 5,
+    title: 'The Last Of Us',
+    price: 18,
+    images: [
+      'http://localhost:5007/TheLastOfUs-350x200.webp',
+      'http://localhost:5007/TheLastOfUs-images-350x200.jpeg',
+      'http://localhost:5007/TheLastOfUs-images2-350x200.jpeg',
+    ],
+    description: 'Pasinerkite į mirtinos pandemijos sugniuždytą pasaulį su šia patobulinta originalo versija – kuri iš pradžių buvo paleista PS3 konsolei – The Last of Us Remastered PS4 CD!',
+    category: 'Nuotykių',
+    condition: 'Truputį ibrėžtas diskas',
+    location: {
+      city: 'Skuodas',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 6,
+    title: 'Grand Theft Auto V',
+    price: 13,
+    images: [
+      'http://localhost:5007/GTAV-350x200.webp',
+      'http://localhost:5007/GTAV-images-350x200.jpg',
+      'http://localhost:5007/GTAV-images2-350x200.jpg',
+    ],
+    description: 'Rockstar Games savo atviro pasaulio šedevrą Grand Theft Auto V pirmą kartą išleido 2013-siais, tačiau jau po metų nuo originaliosios išleidimo datos GTA V buvo pristatytas ir aštuntosios kartos konsolėms.',
+    category: 'Veiksmo',
+    condition: 'Gera',
+    location: {
+      city: 'Prienai',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 7,
+    title: 'Call of Duty: WWII',
+    price: 9,
+    images: [
+      'http://localhost:5007/WWII-350x200.webp',
+      'http://localhost:5007/WWII-images-350x200.jpg',
+      'http://localhost:5007/WWII-images2-350x200.jpg',
+    ],
+    description: 'Norite išbandyti modernų žaidimą realistiškai atkuriantį Antrojo pasaulinio karo atmosferą? Įsigykite Call of Duty: World War 2 PS4 CD!',
+    category: 'Šaudyklės',
+    condition: 'Gera',
+    location: {
+      city: 'Vilnius',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 8,
+    title: 'Far Cry 6',
+    price: 25,
+    images: [
+      'http://localhost:5007/Far-Cry-6-350x200.webp',
+      'http://localhost:5007/Far-Cry-6-images-350x200.jpg',
+      'http://localhost:5007/Far-Cry-6-images2-350x200.jpg',
+    ],
+    description: 'Ubisoft Toronto ir Ubisoft Entertainment žaidimų kūrėjų ir leidėjų komandos pristato vaizdo žaidimą, kuriame puikiai atskleidžiamas FPS žanras ir visas jo žavesys.',
+    category: 'Veiksmo',
+    condition: 'Labai gera',
+    location: {
+      city: 'Vilnius',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 9,
+    title: 'Uncharted 4: A Thief’s End',
+    price: 30,
+    images: [
+      'http://localhost:5007/Uncharted-350x200.webp',
+      'http://localhost:5007/Uncharted-images-350x200.jpg',
+      'http://localhost:5007/Uncharted-images2-350x200.jpg',
+    ],
+    description: "Įsigydami Uncharted 4: A Thief's End PS4 CD gausite progą išmėginti labiausiai atidirbtą ilgametės, išskirtinai PlayStation platformai leidžiamos studijos Noughty Dog sukurtos serijos žaidimą.",
+    category: 'Nuotykių',
+    condition: 'Labai gera',
+    location: {
+      city: 'London',
+      country: 'United Kingdom',
+    },
+  },
+  {
+    id: 10,
+    title: "Assassin's Creed Odyssey",
+    price: 15,
+    images: [
+      'http://localhost:5007/Odyssey-350x200.webp',
+      'http://localhost:5007/Odyssey-images-350x200.jpg',
+      'http://localhost:5007/Odyssey-images-350x200.jpg',
+    ],
+    description: 'Assassin‘s Creed: Odyssey – vienuolikta dalis žymiojoje Ubisoft kompanijos sukurtoje Assassin‘s Creed žaidimų serijoje.',
+    category: 'Veiksmo',
+    condition: 'Gera',
+    location: {
+      city: 'Klaipėda',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 11,
+    title: 'Detroit: Become Human',
+    price: 12,
+    images: [
+      'http://localhost:5007/Detroit-350x200.webp',
+      'http://localhost:5007/Detroit-images-350x200.jpg',
+      'http://localhost:5007/Detroit-images2-350x200.jpg',
+    ],
+    description: 'Detroit: Become Human ir kino filmų įspūdį sudarantis nuotykių žaidimas su interaktyvia istorijos eiga ir kiberpanko tematikos pasauliu.',
+    category: 'Veiksmo',
+    condition: 'Gera',
+    location: {
+      city: 'Klaipėda',
+      country: 'Lietuva',
+    },
+  },
+  {
+    id: 12,
+    title: 'NBA 2k23',
+    price: 55,
+    images: [
+      'http://localhost:5007/NBA2K23_350x200.webp',
+      'http://localhost:5007/NBA2K23-images-350x200.jpg',
+      'http://localhost:5007/NBA2K23-images2-350x200.jpg',
+    ],
+    description: 'Pasiruošk įtampai ir džiaugsmui žaidžiant krepšinio aikštelėje!',
+    category: 'Sportas',
+    condition: 'Labai gera',
+    location: {
+      city: 'Kaunas',
+      country: 'Lietuva',
+    },
+  },
+  {
+    title: 'God of War III',
+    price: 6,
+    images: [
+      'https://cdn-products.eneba.com/resized-products/RgDWjZCHFyUL9tQCNS46Pmbt2mTP7KTpYRaibapEv9c_350x200_1x-0.png',
+    ],
+    description: 'SONY Interactive Entertainment pristato vienos populiariausios PlayStation 4 platformos God of War 3 kūrinio moderniai perdirbtą versiją – God of War III: Remastered.',
+    category: 'Veiksmo',
+    condition: 'Gera',
+    location: {
+      city: 'Valhala',
+      country: 'Israelis',
+    },
+    id: 13,
+  },
+];
+
+export default gamesData;

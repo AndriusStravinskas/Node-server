@@ -1,7 +1,8 @@
 declare global {
 
   type ResponseError = {
-    error: string
+    error: string,
+    errors?: string[],
   };
 }
 

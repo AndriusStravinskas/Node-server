@@ -1,0 +1,21 @@
+import { RequestHandler } from 'express';
+import GamesModels from './game-models';
+import gamesData from './games-data';
+
+type Game = {
+  id: number,
+  title: string,
+};
+
+const games: GamesModels[] = gamesData;
+
+export const getGames: RequestHandler<
+  {}, // Parametrai
+  Game[], // atsakymo tipas
+  {}, // body - gaunami duomenys
+  {} // QueryParams - duomenis siunčiant GET užklausas, pvz: ?min=1&max=18
+> = (req, res) => {
+  res.status(200).json(games);
+};
+
+export default getGames;
