@@ -5,8 +5,8 @@ const gameDataValidationSchema: yup.ObjectSchema<GamesData> = yup.object({
   title: yup.string().required('title is required').min(2, 'title must have at least 2 symbols').max(32, 'title cant have more than 32 symbols'),
   price: yup.number().required('price is required').positive('price must be positive')
   .test(
-    'is-decimal',
-    'The amount should be a decimal with maximum two digits after comma',
+    'isPrice',
+    'incorrect price format',
     (val: any) => Number(val.toFixed(2)) === val,
   ),
   description: yup.string().required('description is required').min(2, 'description must have at least 2 symbols'),

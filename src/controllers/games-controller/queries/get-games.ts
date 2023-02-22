@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
-import { GamesModels } from './game-models';
-import gamesData from './games-data';
+import { GamesModels } from '../game-models';
+import gamesData from '../games-data';
 
 type Game = {
   id: string,

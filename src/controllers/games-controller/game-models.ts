@@ -13,3 +13,5 @@ export type GamesModels = {
 };
 
 export type GamesData = Omit<GamesModels, 'id'>;
+
+export type PartialGameData = Partial<GamesData>;

@@ -1,9 +1,9 @@
 import { RequestHandler } from 'express';
 import { ValidationError } from 'yup';
 import createId from 'uniqid';
-import gameDataValidationSchema from './game-data-validation-schema';
-import { GamesModels, GamesData } from './game-models';
-import gamesData from './games-data';
+import gameDataValidationSchema from '../game-data-validation-schema';
+import { GamesModels, GamesData } from '../game-models';
+import gamesData from '../games-data';
 
 export const createGame: RequestHandler<
   {},
