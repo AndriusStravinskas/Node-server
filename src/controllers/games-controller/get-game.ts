@@ -1,9 +1,9 @@
 import { RequestHandler } from 'express';
-import GamesModels from './game-models';
+import { GamesModels } from './game-models';
 import gamesData from './games-data';
 
 type Game = {
-  id: number,
+  id: string,
   title: string,
 };
 

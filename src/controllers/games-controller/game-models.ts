@@ -1,5 +1,5 @@
 export type GamesModels = {
-  id: number,
+  id: string,
   title: string,
   price: number,
   images: string[],

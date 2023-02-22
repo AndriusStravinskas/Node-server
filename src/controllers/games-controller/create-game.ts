@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import { ValidationError } from 'yup';
+import createId from 'uniqid';
 import gameDataValidationSchema from './game-data-validation-schema';
 import { GamesModels, GamesData } from './game-models';
 import gamesData from './games-data';
@@ -12,7 +13,7 @@ export const createGame: RequestHandler<
 > = (req, res) => {
   try {
     const gameData = gameDataValidationSchema.validateSync(req.body, { abortEarly: false });
-    const newGame: GamesModels = { id: 5, ...gameData };
+    const newGame: GamesModels = { id: createId(), ...gameData };
     gamesData.push(newGame);
 
     res.status(201).json(newGame);

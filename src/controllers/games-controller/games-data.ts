@@ -1,6 +1,6 @@
 const gamesData = [
   {
-    id: 1,
+    id: '1',
     title: 'Spyder-man: Miles Morales',
     price: 23,
     images: [
@@ -17,7 +17,7 @@ const gamesData = [
     },
   },
   {
-    id: 2,
+    id: '2',
     title: 'God of War Ragnarök',
     price: 46,
     images: [
@@ -34,7 +34,7 @@ const gamesData = [
     },
   },
   {
-    id: 3,
+    id: '3',
     title: "Assassin's Creed Valhalla",
     price: 18,
     images: [
@@ -51,7 +51,7 @@ const gamesData = [
     },
   },
   {
-    id: 4,
+    id: '4',
     title: 'Days Gone',
     price: 12,
     images: [
@@ -68,7 +68,7 @@ const gamesData = [
     },
   },
   {
-    id: 5,
+    id: '5',
     title: 'The Last Of Us',
     price: 18,
     images: [
@@ -85,7 +85,7 @@ const gamesData = [
     },
   },
   {
-    id: 6,
+    id: '6',
     title: 'Grand Theft Auto V',
     price: 13,
     images: [
@@ -102,7 +102,7 @@ const gamesData = [
     },
   },
   {
-    id: 7,
+    id: '7',
     title: 'Call of Duty: WWII',
     price: 9,
     images: [
@@ -119,7 +119,7 @@ const gamesData = [
     },
   },
   {
-    id: 8,
+    id: '8',
     title: 'Far Cry 6',
     price: 25,
     images: [
@@ -136,7 +136,7 @@ const gamesData = [
     },
   },
   {
-    id: 9,
+    id: '9',
     title: 'Uncharted 4: A Thief’s End',
     price: 30,
     images: [
@@ -153,7 +153,7 @@ const gamesData = [
     },
   },
   {
-    id: 10,
+    id: '10',
     title: "Assassin's Creed Odyssey",
     price: 15,
     images: [
@@ -170,7 +170,7 @@ const gamesData = [
     },
   },
   {
-    id: 11,
+    id: '11',
     title: 'Detroit: Become Human',
     price: 12,
     images: [
@@ -187,7 +187,7 @@ const gamesData = [
     },
   },
   {
-    id: 12,
+    id: '12',
     title: 'NBA 2k23',
     price: 55,
     images: [
@@ -216,7 +216,7 @@ const gamesData = [
       city: 'Valhala',
       country: 'Israelis',
     },
-    id: 13,
+    id: '13',
   },
 ];
 
