@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { PartialGameData } from './game-models';
+import { PartialGameData } from '../types';
 
 const PartialGameDataValidationSchema: yup.ObjectSchema<PartialGameData> = yup.object({
   title: yup.string().min(2, 'title must have at least 2 symbols').max(32, 'title cant have more than 32 symbols'),

@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { GamesData } from './game-models';
+import { GamesData } from '../types';
 
 const gameDataValidationSchema: yup.ObjectSchema<GamesData> = yup.object({
   title: yup.string().required('title is required').min(2, 'title must have at least 2 symbols').max(32, 'title cant have more than 32 symbols'),

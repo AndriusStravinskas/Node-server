@@ -1,8 +1,8 @@
 import { RequestHandler } from 'express';
 import { ValidationError } from 'yup';
-import { GamesModels, PartialGameData } from '../game-models';
+import { GamesModels, PartialGameData } from '../types';
 import gamesData from '../games-data';
-import PartialGameDataValidationSchema from '../partial-game-data-validation-schema';
+import PartialGameDataValidationSchema from '../validation-schema/partial-game-data-validation-schema';
 
 export const updateGame: RequestHandler<
   { id: string | undefined }, // Parametrai
@@ -29,7 +29,7 @@ export const updateGame: RequestHandler<
       { abortEarly: false },
     );
     const foundGame = gamesData[foundGamesIndex];
-    const updatedGame = {
+    const updatedGame: GamesModels = {
       ...foundGame,
       ...partialGameData,
     };

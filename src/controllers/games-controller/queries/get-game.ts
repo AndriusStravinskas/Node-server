@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { GamesModels } from '../game-models';
+import { GamesModels } from '../types';
 import gamesData from '../games-data';
 
 export const getGame: RequestHandler<
