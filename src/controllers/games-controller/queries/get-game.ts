@@ -22,5 +22,3 @@ export const getGame: RequestHandler<
   }
   res.status(200).json(foundGame);
 };
-
-export default getGame;

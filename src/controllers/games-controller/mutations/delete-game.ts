@@ -23,7 +23,5 @@ export const deleteGame: RequestHandler<
 
   const [deletedGame] = gamesData.splice(foundGameIndex, 1);
 
-  res.status(200).json(deletedGame);
+  res.status(204).json(deletedGame);
 };
-
-export default deleteGame;

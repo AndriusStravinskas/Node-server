@@ -1,7 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import config from './config';
-import gamesRouter from './routers/games-router';
+import gamesRouter from './controllers/games-controller';
+import connectMySql from './services/my-sql';
 
 const server = express();
 
@@ -11,7 +12,9 @@ server.use(express.static('public'));
 server.use(express.json());
 server.use('/api/games', gamesRouter);
 
-// Server init
-server.listen(config.server.port, () => {
-  console.log(`server is running on: http://${config.server.domain}:${config.server.port}`);
+connectMySql(() => {
+  // Server init
+  server.listen(config.server.port, () => {
+    console.log(`server is running on: http://${config.server.domain}:${config.server.port}`);
+  });
 });

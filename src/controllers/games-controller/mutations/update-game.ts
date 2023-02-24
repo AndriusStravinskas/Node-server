@@ -51,5 +51,3 @@ export const updateGame: RequestHandler<
       }
   }
 };
-
-export default updateGame;

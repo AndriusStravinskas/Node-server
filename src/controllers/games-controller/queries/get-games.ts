@@ -17,5 +17,3 @@ export const getGames: RequestHandler<
 > = (req, res) => {
   res.status(200).json(games);
 };
-
-export default getGames;
