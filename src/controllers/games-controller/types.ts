@@ -5,7 +5,7 @@ export type GamesModels = {
   images: string[],
   description: string,
   category: string,
-  condition: string,
+  gameCondition: string,
   location: {
     city: string,
     country: string,

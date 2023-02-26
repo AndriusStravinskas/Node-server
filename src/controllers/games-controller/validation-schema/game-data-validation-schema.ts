@@ -13,7 +13,7 @@ const gameDataValidationSchema: yup.ObjectSchema<GamesData> = yup.object({
   price: priceSchema(true),
   description: descriptionSchema.required('description is required'),
   category: categorySchema.required('category is required'),
-  condition: conditionSchema.required('condition is required'),
+  gameCondition: conditionSchema.required('condition is required'),
   images: imagesSchema.required(),
   location: locationSchema.required('location is required'),
 }).strict(true);

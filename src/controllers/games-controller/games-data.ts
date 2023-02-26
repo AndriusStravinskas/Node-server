@@ -10,7 +10,7 @@ const gamesData = [
     ],
     description: 'Apsivilkite patobulintą Spider Man kostiumą ir pasiruoškite apsaugoti Niujorką.',
     category: 'Veiksmo',
-    condition: 'Labai gera',
+    gameCondition: 'Labai gera',
     location: {
       city: 'Kaunas',
       country: 'Lietuva',
@@ -27,7 +27,7 @@ const gamesData = [
     ],
     description: 'Tiek kritikų, tiek įvairių žaidėjų bendruomenių liaupsių sulaukęs God of War Ragnarök giriamas ne be priežasties!',
     category: 'Nuotykių',
-    condition: 'Labai gera',
+    gameCondition: 'Labai gera',
     location: {
       city: 'Kaunas',
       country: 'Lietuva',
@@ -44,7 +44,7 @@ const gamesData = [
     ],
     description: 'Ubisoft pristato Assassin‘s Creed kūrinį, kurio siužetas grįstas IX a. Anglijos istorija, tad išvysime vikingus!',
     category: 'Veiksmo',
-    condition: 'Labai gera',
+    gameCondition: 'Labai gera',
     location: {
       city: 'Kaunas',
       country: 'Lietuva',
@@ -61,7 +61,7 @@ const gamesData = [
     ],
     description: 'Ubisoft pristato Assassin‘s Creed kūrinį, kurio siužetas grįstas IX a. Anglijos istorija, tad išvysime vikingus!',
     category: 'Atviras pasaulis',
-    condition: 'Labai gera',
+    gameCondition: 'Labai gera',
     location: {
       city: 'Kaunas',
       country: 'Lietuva',
@@ -78,7 +78,7 @@ const gamesData = [
     ],
     description: 'Pasinerkite į mirtinos pandemijos sugniuždytą pasaulį su šia patobulinta originalo versija – kuri iš pradžių buvo paleista PS3 konsolei – The Last of Us Remastered PS4 CD!',
     category: 'Nuotykių',
-    condition: 'Truputį ibrėžtas diskas',
+    gameCondition: 'Truputį ibrėžtas diskas',
     location: {
       city: 'Skuodas',
       country: 'Lietuva',
@@ -95,7 +95,7 @@ const gamesData = [
     ],
     description: 'Rockstar Games savo atviro pasaulio šedevrą Grand Theft Auto V pirmą kartą išleido 2013-siais, tačiau jau po metų nuo originaliosios išleidimo datos GTA V buvo pristatytas ir aštuntosios kartos konsolėms.',
     category: 'Veiksmo',
-    condition: 'Gera',
+    gameCondition: 'Gera',
     location: {
       city: 'Prienai',
       country: 'Lietuva',
@@ -112,7 +112,7 @@ const gamesData = [
     ],
     description: 'Norite išbandyti modernų žaidimą realistiškai atkuriantį Antrojo pasaulinio karo atmosferą? Įsigykite Call of Duty: World War 2 PS4 CD!',
     category: 'Šaudyklės',
-    condition: 'Gera',
+    gameCondition: 'Gera',
     location: {
       city: 'Vilnius',
       country: 'Lietuva',
@@ -129,7 +129,7 @@ const gamesData = [
     ],
     description: 'Ubisoft Toronto ir Ubisoft Entertainment žaidimų kūrėjų ir leidėjų komandos pristato vaizdo žaidimą, kuriame puikiai atskleidžiamas FPS žanras ir visas jo žavesys.',
     category: 'Veiksmo',
-    condition: 'Labai gera',
+    gameCondition: 'Labai gera',
     location: {
       city: 'Vilnius',
       country: 'Lietuva',
@@ -146,7 +146,7 @@ const gamesData = [
     ],
     description: "Įsigydami Uncharted 4: A Thief's End PS4 CD gausite progą išmėginti labiausiai atidirbtą ilgametės, išskirtinai PlayStation platformai leidžiamos studijos Noughty Dog sukurtos serijos žaidimą.",
     category: 'Nuotykių',
-    condition: 'Labai gera',
+    gameCondition: 'Labai gera',
     location: {
       city: 'London',
       country: 'United Kingdom',
@@ -163,7 +163,7 @@ const gamesData = [
     ],
     description: 'Assassin‘s Creed: Odyssey – vienuolikta dalis žymiojoje Ubisoft kompanijos sukurtoje Assassin‘s Creed žaidimų serijoje.',
     category: 'Veiksmo',
-    condition: 'Gera',
+    gameCondition: 'Gera',
     location: {
       city: 'Klaipėda',
       country: 'Lietuva',
@@ -180,7 +180,7 @@ const gamesData = [
     ],
     description: 'Detroit: Become Human ir kino filmų įspūdį sudarantis nuotykių žaidimas su interaktyvia istorijos eiga ir kiberpanko tematikos pasauliu.',
     category: 'Veiksmo',
-    condition: 'Gera',
+    gameCondition: 'Gera',
     location: {
       city: 'Klaipėda',
       country: 'Lietuva',
@@ -197,7 +197,7 @@ const gamesData = [
     ],
     description: 'Pasiruošk įtampai ir džiaugsmui žaidžiant krepšinio aikštelėje!',
     category: 'Sportas',
-    condition: 'Labai gera',
+    gameCondition: 'Labai gera',
     location: {
       city: 'Kaunas',
       country: 'Lietuva',
@@ -211,7 +211,7 @@ const gamesData = [
     ],
     description: 'SONY Interactive Entertainment pristato vienos populiariausios PlayStation 4 platformos God of War 3 kūrinio moderniai perdirbtą versiją – God of War III: Remastered.',
     category: 'Veiksmo',
-    condition: 'Gera',
+    gameCondition: 'Gera',
     location: {
       city: 'Valhala',
       country: 'Israelis',

@@ -13,7 +13,7 @@ const PartialGameDataValidationSchema: yup.ObjectSchema<PartialGameData> = yup.o
   price: priceSchema(),
   description: descriptionSchema,
   category: categorySchema,
-  condition: conditionSchema,
+  gameCondition: conditionSchema,
   images: imagesSchema,
   location: locationSchema,
 }).strict(true);
