@@ -10,9 +10,9 @@ const gamesRouter = express.Router();
 
 gamesRouter.get('/', getGames);
 gamesRouter.get('/:id', getGame);
-
 gamesRouter.post('/', createGame);
-gamesRouter.patch('/:id', updateGame);
-gamesRouter.delete('/:id', deleteGame);
+
+// gamesRouter.patch('/:id', updateGame);
+// gamesRouter.delete('/:id', deleteGame);
 
 export default gamesRouter;
