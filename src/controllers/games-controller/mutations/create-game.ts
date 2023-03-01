@@ -7,6 +7,15 @@ import gamesData from '../games-data';
 import mysql from 'mysql2/promise';
 import config from '../../../config';
 
+type CreateGameQueryResult = 
+[
+    mysql.ResultSetHeader,
+    mysql.ResultSetHeader,
+    mysql.ResultSetHeader,
+    mysql.ResultSetHeader,
+    GamesModels[],
+];
+
 export const createGame: RequestHandler<
   {},
   GamesModels | ResponseError,
@@ -17,27 +26,65 @@ export const createGame: RequestHandler<
     const gameData = gameDataValidationSchema.validateSync(req.body, { abortEarly: false });
     
     const mySqlConnection = await mysql.createConnection(config.db)
-    const sql = `
+    const preparedSql = `
     INSERT INTO locations (country, city) VALUES
-    ('${gameData.location.country}', '${gameData.location.city}');
+    (?, ?);
 
     INSERT INTO games (title, price, description, category, gameCondition, locationId) VALUES
-    ('${gameData.title}', '${gameData.price}', '${gameData.description}', '${gameData.category}', '${gameData.gameCondition}', last_insert_id());
+    (?, ?, ?, ?, ?, last_insert_id());
+
+    SET @gameId = last_insert_id();
 
     INSERT INTO images (src, gameId) VALUES
-    ${gameData.images.map(img => `('${img}', last_insert_id())`).join(', ')}
+    ${gameData.images.map(() => `(?, last_insert_id())`).join(',\n')};
+
+    SELECT 
+	  g.id,
+    g.title,
+    json_objectagg(
+    l.country,
+    l.city)
+    as location,
+    g.price,
+    g.gameCondition,
+    g.description,
+    json_arrayagg(i.src) as images
+FROM images i
+LEFT JOIN games g
+	ON i.gameId = g.id
+LEFT JOIN locations l
+	ON g.locationId = l.id
+  WHERE g.id = @gameId
+group by g.id;
   `;
 
-  console.log(sql);
-  
-    const queryResponse = await mySqlConnection.query<mysql.ResultSetHeader>(sql);
+  const preparedSqlData = [
+    gameData.location.country,
+    gameData.location.city,
+    gameData.title,
+    gameData.price,
+    gameData.description,
+    gameData.category,
+    gameData.gameCondition,
+    ...gameData.images,
+  ]
 
-  console.log(queryResponse);
+  console.log(preparedSql);
+  
+    const [
+      queryResultsArr,
+      test
+    ] = await mySqlConnection.query(preparedSql, preparedSqlData);
+    const [ createdGame ] = (queryResultsArr as CreateGameQueryResult)[4];
+
+  console.log({
+      createdGame
+  });
   
 
   await mySqlConnection.end()
 
-    res.status(201).json({} as GamesModels);
+    res.status(201).json(createdGame);
   } catch (error) {
     if (error instanceof ValidationError) {
       const manyErrors = error.errors.length > 1;
