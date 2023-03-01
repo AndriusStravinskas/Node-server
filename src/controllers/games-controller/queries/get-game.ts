@@ -18,24 +18,30 @@ export const getGame: RequestHandler<
   }
 
   const mySqlConnection = await mysql.createConnection(config.db)
-  const [games] = await mySqlConnection.query<GamesModels[]>(`
+
+  const preparedSql = `
   SELECT 
-	  g.id,
-    g.title,
-    json_objectagg(
-    l.country,
-    l.city)
-    as location,
-    g.price,
-    g.gameCondition,
-    json_arrayagg(i.src) as imagesimgCount
+  g.id,
+  g.title,
+  json_objectagg(
+  l.country,
+  l.city)
+  as location,
+  g.price,
+  g.gameCondition,
+  g.description,
+  json_arrayagg(i.src) as images
 FROM images i
 LEFT JOIN games g
 	ON i.gameId = g.id
 LEFT JOIN locations l
 	ON g.locationId = l.id
-WHERE g.id = ${id}
-group by g.id;`);
+WHERE g.id = ?
+group by g.id;`;
+
+const preparedSqlData = [id]
+  
+  const [games] = await mySqlConnection.query<GamesModels[]>(preparedSql, preparedSqlData);
 await mySqlConnection.end()
 
 if (games.length === 0) {
