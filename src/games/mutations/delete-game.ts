@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
-import GameService from '../controllers/games-controller/model';
-import { GameViewModels } from '../controllers/games-controller/types';
+import GameService from '../model';
+import { GameViewModels } from '../types';
 
 export const deleteGame: RequestHandler<
   { id: string | undefined }, // Parametrai

@@ -4,7 +4,7 @@ import { getGame } from './queries/get-game';
 
 import { createGame } from './mutations/create-game';
 import { updateGame } from './mutations/update-game';
-import { deleteGame } from '../../services/delete-game';
+import { deleteGame } from './mutations/delete-game';
 
 const gamesRouter = express.Router();
 

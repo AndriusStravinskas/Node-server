@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import config from 'config';
-import gamesRouter from 'controllers/games-controller';
+import gamesRouter from 'games-controller';
 import connectMySql from 'services/my-sql';
 
 const server = express();
