@@ -1,6 +1,6 @@
 import mysql from 'mysql';
 
-import config from '../config';
+import config from 'config';
 
 const connection = mysql.createConnection(config.db);
 
@@ -12,5 +12,19 @@ const connectMySql = (callback: VoidFunction) => {
     connection.end();
   });
 };
+
+export function colonObjectQueryFormat(
+  this: mysql.Connection,
+  query: string,
+  valueObj?: Record<string, string>,
+  ) {
+  if (valueObj === undefined) return query;
+  return query.replace(/:(\w+)/g, (txt: string, key: string) => {
+    if (key in valueObj) {
+      return this.escape(valueObj[key]);
+    }
+    return txt;
+  });
+}
 
 export default connectMySql;

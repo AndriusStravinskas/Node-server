@@ -1,8 +1,8 @@
 import { RequestHandler } from 'express';
-import { GameViewModels } from '../types';
-import GameService from '../model';
+import GameService from '../controllers/games-controller/model';
+import { GameViewModels } from '../controllers/games-controller/types';
 
-export const getGame: RequestHandler<
+export const deleteGame: RequestHandler<
   { id: string | undefined }, // Parametrai
   GameViewModels | ResponseError, // atsakymo tipas
   {}, // body - gaunami duomenys
@@ -17,9 +17,14 @@ export const getGame: RequestHandler<
 
   try {
     const game = await GameService.getGame(id);
+    await GameService.deleteGame(id);
+
     res.status(200).json(game);
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'request error';
-    res.status(404).json({ error: message });
+    if (error instanceof Error) {
+      res.status(400).json({ error: error.message });
+    } else {
+      res.status(400).json({ error: 'Request error' });
+    }
   }
 };

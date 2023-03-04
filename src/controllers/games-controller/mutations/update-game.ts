@@ -1,15 +1,15 @@
 import { RequestHandler } from 'express';
 import { ValidationError } from 'yup';
-import { GamesModels, PartialGameData } from '../types';
-import gamesData from '../games-data';
+import { GameViewModels, PartialGameData } from '../types';
 import PartialGameDataValidationSchema from '../validation-schema/partial-game-data-validation-schema';
+import GameService from '../model';
 
 export const updateGame: RequestHandler<
   { id: string | undefined }, // Parametrai
-  GamesModels | ResponseError, // atsakymo tipas
+  GameViewModels | ResponseError, // atsakymo tipas
   PartialGameData, // body - gaunami duomenys
   {} // QueryParams - duomenis siunčiant GET užklausas, pvz: ?min=1&max=18
-> = (req, res) => {
+> = async (req, res) => {
   const { id } = req.params;
 
   if (id === undefined) {
@@ -17,24 +17,12 @@ export const updateGame: RequestHandler<
     return;
   }
 
-  const foundGamesIndex = gamesData.findIndex((game) => game.id === id);
-
-  if (foundGamesIndex === undefined) {
-    res.status(400).json({ error: `game was not found with id: "${id}"` });
-  }
-
   try {
     const partialGameData = PartialGameDataValidationSchema.validateSync(
       req.body,
       { abortEarly: false },
     );
-    const foundGame = gamesData[foundGamesIndex];
-    const updatedGame: GamesModels = {
-      ...foundGame,
-      ...partialGameData,
-    };
-
-    gamesData.splice(foundGamesIndex, 1, updatedGame);
+    const updatedGame = await GameService.updateGame(id, partialGameData);
 
     res.status(200).json(updatedGame);
   } catch (error) {

@@ -1,7 +1,6 @@
-import { RowDataPacket } from "mysql2";
-import { type } from "os";
+import { RowDataPacket } from 'mysql2';
 
-export type PrivateGamesModels = {
+export type PrivateViewGameModel = {
   id: number,
   title: string,
   price: number,
@@ -15,8 +14,8 @@ export type PrivateGamesModels = {
   }
 };
 
-export type GamesModels = PrivateGamesModels & RowDataPacket;
+export type GameViewModels = PrivateViewGameModel & RowDataPacket;
 
-export type GamesData = Omit<PrivateGamesModels, 'id'>;
+export type GameData = Omit<PrivateViewGameModel, 'id'>;
 
-export type PartialGameData = Partial<GamesData>;
+export type PartialGameData = Partial<GameData>;
