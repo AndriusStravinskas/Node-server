@@ -1,4 +1,5 @@
 import { RequestHandler } from 'express';
+import ErrorService, { ServerSetupError } from 'services/error-service';
 import GameService from '../model';
 import { GameViewModels } from '../types';
 
@@ -10,21 +11,14 @@ export const deleteGame: RequestHandler<
 > = async (req, res) => {
   const { id } = req.params;
 
-  if (id === undefined) {
-    res.status(400).json({ error: 'server setup error' });
-    return;
-  }
-
   try {
+    if (id === undefined) throw new ServerSetupError();
     const game = await GameService.getGame(id);
     await GameService.deleteGame(id);
 
     res.status(200).json(game);
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(400).json({ error: error.message });
-    } else {
-      res.status(400).json({ error: 'Request error' });
-    }
+    const [status, errorResponse] = ErrorService.handleError(error);
+    res.status(status).json(errorResponse);
   }
 };
