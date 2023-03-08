@@ -1,8 +1,6 @@
 import { RequestHandler } from 'express';
 import ErrorService from 'services/error-service';
-import bcrypt from 'bcrypt';
-import config from 'config';
-import { createAuthSuccessResponse } from './helpers';
+import { createAuthSuccessResponse } from './helpers/create-auth-success-response';
 import UserModel from './model';
 import { AuthSuccessResponse, RegistrationData } from './type';
 import registrationDataValidationSchema from './validation-schemas/registration-data-validation-schema';
@@ -14,18 +12,15 @@ export const register: RequestHandler<
   {}
 > = async (req, res) => {
   try {
-    const registrationData = registrationDataValidationSchema
+    const { passwordConfirmation, ...registrationData } = registrationDataValidationSchema
     .validateSync(req.body, { abortEarly: false });
 
-    const newUser = await UserModel.createUser({
-      email: registrationData.email,
-      password: await bcrypt.hash(registrationData.password, config.secret.bcryptRounds),
-      name: registrationData.name,
-      surname: registrationData.surname,
-    });
+    const emailAvailable = await UserModel.emailAvailable(registrationData.email);
+    if (!emailAvailable) throw new Error(`Email '${registrationData.email}' is already taken`);
+
+    const newUser = await UserModel.createUser(registrationData);
 
     const authResponse = createAuthSuccessResponse(newUser);
-
     res.status(200).json(authResponse);
   } catch (error) {
     const [status, errorResponse] = ErrorService.handleError(error);
