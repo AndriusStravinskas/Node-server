@@ -1,0 +1,31 @@
+import { RowDataPacket } from 'mysql2';
+
+// export type UserEntity = {
+//   id: number,
+//   email: string,
+//   name: string,
+//   surname: string,
+//   password: string,
+//   role: 'ADMIN' | 'USER',
+// };
+export type UserEntityRow = UserEntity & RowDataPacket;
+export type UserViewModel = Omit<UserEntity, 'password'>;
+
+export type RegistrationData = {
+  email: string,
+  emailConfirmation: string,
+  name: string,
+  surname: string,
+  password: string,
+  passwordConfirmation: string
+};
+
+export type Credentials = {
+  email: string,
+  password: string
+};
+export type CredentialPartial = Partial<Credentials>;
+export type AuthSuccessResponse = {
+  token: string,
+  user: UserViewModel,
+};
