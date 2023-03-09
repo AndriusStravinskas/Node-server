@@ -1,20 +1,24 @@
 import { RequestHandler } from 'express';
-import ErrorService from 'services/error-service';
+import ErrorService, { ServerSetupError } from 'services/error-service';
+import UserModel from 'models/user-model';
 import gameDataValidationSchema from '../validation-schema/game-data-validation-schema';
-import { GameViewModels, GameData } from '../types';
+import { GameViewModels, PartialGameBody } from '../types';
 import GameService from '../model';
 
 export const createGame: RequestHandler<
   {},
   GameViewModels | ResponseError,
-  GameData,
+  PartialGameBody,
   {}
 > = async (req, res) => {
   try {
-    const gameData: GameData = gameDataValidationSchema
+    const gameData = gameDataValidationSchema
     .validateSync(req.body, { abortEarly: false });
 
-    const createdGame = await GameService.createGame(gameData);
+    if (req.authData === undefined) throw new ServerSetupError();
+    const user = await UserModel.getUserByEmail(req.authData.email);
+
+    const createdGame = await GameService.createGame({ ...gameData, ownerId: user.id });
 
     res.status(201).json(createdGame);
   } catch (error) {

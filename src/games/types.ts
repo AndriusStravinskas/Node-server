@@ -11,11 +11,14 @@ export type PrivateViewGameModel = {
   location: {
     city: string,
     country: string,
-  }
+  },
+  ownerId: number
 };
 
 export type GameViewModels = PrivateViewGameModel & RowDataPacket;
 
 export type GameData = Omit<PrivateViewGameModel, 'id'>;
 
-export type PartialGameData = Partial<GameData>;
+export type GameBody = Omit<GameData, 'ownerId'>;
+
+export type PartialGameBody = Partial<GameBody>;

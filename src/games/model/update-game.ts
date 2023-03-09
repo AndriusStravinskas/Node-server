@@ -1,12 +1,12 @@
 import mysql from 'mysql2/promise';
 import config from 'config';
 import { colonObjectQueryFormat } from 'services/my-sql';
-import { GameViewModels, PartialGameData } from '../types';
+import { GameViewModels, PartialGameBody } from '../types';
 import SQL from './static-sql';
 
 type PrepareSqlResult = [string, Record<string, string>];
 
-type PrepareSql = (gameData: PartialGameData) => PrepareSqlResult;
+type PrepareSql = (gameData: PartialGameBody) => PrepareSqlResult;
 
 const prepareImagesSql: PrepareSql = (gameData) => {
   const bindingsOrNull = gameData.images?.reduce((prevBinding, img, i) => ({
@@ -66,7 +66,7 @@ const prepareGameSql: PrepareSql = (gameData) => {
   return [sql, bindings];
 };
 
-export const updateGame = async (id:string, gameData: PartialGameData): Promise<GameViewModels> => {
+export const updateGame = async (id:string, gameData: PartialGameBody): Promise<GameViewModels> => {
   const mySqlConnection = await mysql.createConnection(config.db);
   mySqlConnection.config.queryFormat = colonObjectQueryFormat;
 

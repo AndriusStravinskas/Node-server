@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { PartialGameData } from '../types';
+import { PartialGameBody } from '../types';
 import { categorySchema } from './property/category-schema';
 import conditionSchema from './property/condition-schema';
 import { descriptionSchema } from './property/description-schema';
@@ -8,7 +8,7 @@ import { locationSchema } from './property/location-schema';
 import priceSchema from './property/price-schema';
 import { titleSchema } from './property/title-schema';
 
-const PartialGameDataValidationSchema: yup.ObjectSchema<PartialGameData> = yup.object({
+const PartialGameDataValidationSchema: yup.ObjectSchema<PartialGameBody> = yup.object({
   title: titleSchema,
   price: priceSchema(),
   description: descriptionSchema,

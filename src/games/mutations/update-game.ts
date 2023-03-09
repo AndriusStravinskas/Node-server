@@ -1,13 +1,13 @@
 import { RequestHandler } from 'express';
 import ErrorService, { ServerSetupError } from 'services/error-service';
-import { GameViewModels, PartialGameData } from '../types';
+import { GameViewModels, PartialGameBody } from '../types';
 import PartialGameDataValidationSchema from '../validation-schema/partial-game-data-validation-schema';
 import GameService from '../model';
 
 type UpdateGameHandler = RequestHandler<
 { id: string | undefined }, // Parametrai
 GameViewModels | ResponseError, // atsakymo tipas
-PartialGameData, // body - gaunami duomenys
+PartialGameBody, // body - gaunami duomenys
 {} // QueryParams - duomenis siunčiant GET užklausas, pvz: ?min=1&max=18
 >;
 

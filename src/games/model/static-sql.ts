@@ -13,8 +13,7 @@ SELECT
   JSON_OBJECT(
     'name', u.name,
     'surname', u.surname,
-    'email', u.email,
-    'mobile', u.mobile
+    'email', u.email
   ) as owner
 FROM images as i
 LEFT JOIN games as g

@@ -18,8 +18,8 @@ export const createGame = async (gameData: GameData): Promise<GameViewModels> =>
     INSERT INTO locations (country, city) VALUES
     (?, ?);
 
-    INSERT INTO games (title, price, description, category, gameCondition, locationId) VALUES
-    (?, ?, ?, ?, ?, last_insert_id());
+    INSERT INTO games (title, price, description, category, gameCondition, ownerId, locationId) VALUES
+    (?, ?, ?, ?, ?, ?, last_insert_id());
 
     SET @gameId = last_insert_id();
 
@@ -39,6 +39,7 @@ export const createGame = async (gameData: GameData): Promise<GameViewModels> =>
     gameData.description,
     gameData.category,
     gameData.gameCondition,
+    gameData.ownerId,
     ...gameData.images,
   ];
 
