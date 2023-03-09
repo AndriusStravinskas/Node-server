@@ -3,7 +3,7 @@ import ErrorService, { ServerSetupError } from 'services/error-service';
 import UserModel from 'models/user-model';
 import gameDataValidationSchema from '../validation-schema/game-data-validation-schema';
 import { GameViewModels, PartialGameBody } from '../types';
-import GameService from '../model';
+import GamesModel from '../model';
 
 export const createGame: RequestHandler<
   {},
@@ -18,7 +18,7 @@ export const createGame: RequestHandler<
     if (req.authData === undefined) throw new ServerSetupError();
     const user = await UserModel.getUserByEmail(req.authData.email);
 
-    const createdGame = await GameService.createGame({ ...gameData, ownerId: user.id });
+    const createdGame = await GamesModel.createGame({ ...gameData, ownerId: user.id });
 
     res.status(201).json(createdGame);
   } catch (error) {

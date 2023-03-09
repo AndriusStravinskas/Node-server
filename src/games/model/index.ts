@@ -4,7 +4,7 @@ import { createGame } from './create-game';
 import { deleteGame } from './delete-game';
 import { updateGame } from './update-game';
 
-const GameService = {
+const GamesModel = {
   getGames,
   getGame,
 
@@ -13,7 +13,7 @@ const GameService = {
   updateGame,
 };
 
-export default GameService;
+export default GamesModel;
 
 /*
 1. Jeigu yra lokacija turiu padaryti 3 dalykus

@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 import ErrorService, { ServerSetupError } from 'services/error-service';
 import { GameViewModels, PartialGameBody } from '../types';
 import PartialGameDataValidationSchema from '../validation-schema/partial-game-data-validation-schema';
-import GameService from '../model';
+import GamesModel from '../model';
 
 type UpdateGameHandler = RequestHandler<
 { id: string | undefined }, // Parametrai
@@ -20,7 +20,7 @@ export const updateGame: UpdateGameHandler = async (req, res) => {
       req.body,
       { abortEarly: false },
     );
-    const updatedGame = await GameService.updateGame(id, partialGameData);
+    const updatedGame = await GamesModel.updateGame(id, partialGameData);
 
     res.status(200).json(updatedGame);
   } catch (error) {

@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import ErrorService, { ServerSetupError } from 'services/error-service';
 import { GameViewModels } from '../types';
-import GameService from '../model';
+import GamesModel from '../model';
 
 export const getGame: RequestHandler<
   { id: string | undefined }, // Parametrai
@@ -13,7 +13,7 @@ export const getGame: RequestHandler<
 
   try {
     if (id === undefined) throw new ServerSetupError();
-    const game = await GameService.getGame(id);
+    const game = await GamesModel.getGame(id);
 
     res.status(200).json(game);
   } catch (error) {

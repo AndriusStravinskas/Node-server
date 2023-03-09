@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express';
-import ErrorService, { ServerSetupError } from 'services/error-service';
-import GameService from '../model';
+import UserModel from 'models/user-model';
+import ErrorService, { ForbiddenError, ServerSetupError } from 'services/error-service';
+import GamesModel from '../model';
 import { GameViewModels } from '../types';
 
 type DeleteGameHandler = RequestHandler<
@@ -15,8 +16,13 @@ export const deleteGame: DeleteGameHandler = async (req, res) => {
 
   try {
     if (id === undefined) throw new ServerSetupError();
-    const game = await GameService.getGame(id);
-    await GameService.deleteGame(id);
+    if (req.authData === undefined) throw new ServerSetupError();
+    const user = await UserModel.getUserByEmail(req.authData.email);
+    const game = await GamesModel.getGame(id);
+
+    if (user.role !== 'ADMIN' && user.id !== game.owner.id) throw new ForbiddenError();
+
+    await GamesModel.deleteGame(id);
 
     res.status(200).json(game);
   } catch (error) {

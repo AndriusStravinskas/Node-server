@@ -12,12 +12,19 @@ export type PrivateViewGameModel = {
     city: string,
     country: string,
   },
-  ownerId: number
+  owner: {
+    id: number,
+    name: string,
+    surname: string,
+    email: string
+  }
 };
 
 export type GameViewModels = PrivateViewGameModel & RowDataPacket;
 
-export type GameData = Omit<PrivateViewGameModel, 'id'>;
+export type GameData = Omit<PrivateViewGameModel, 'id' | 'owner'> & {
+  ownerId: number,
+};
 
 export type GameBody = Omit<GameData, 'ownerId'>;
 
