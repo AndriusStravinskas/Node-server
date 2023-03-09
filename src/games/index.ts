@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { RequestHandler } from 'express';
+import authMiddleware from 'middlewares/auth-middleware';
 import { getGames } from './queries/get-games';
 import { getGame } from './queries/get-game';
 
@@ -11,9 +12,9 @@ const gamesRouter = express.Router();
 gamesRouter.get('/', getGames);
 gamesRouter.get('/:id', getGame);
 
-gamesRouter.post('/', createGame);
-gamesRouter.delete('/:id', deleteGame);
-gamesRouter.patch('/:id', updateGame);
+gamesRouter.post('/', authMiddleware, createGame);
+gamesRouter.delete('/:id', authMiddleware, deleteGame as RequestHandler);
+gamesRouter.patch('/:id', authMiddleware, updateGame as RequestHandler);
 
 export default gamesRouter;
 

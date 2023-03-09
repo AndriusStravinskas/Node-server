@@ -2,16 +2,20 @@ import config from 'config';
 import jwt from 'jsonwebtoken';
 
 // užslaptintas/užšifruotas - hashed
-type Data = {
-  email: UserEntity['email'],
-  role: UserEntity['role']
+
+const create = (data: AuthData) => jwt.sign(data, config.secret.jwtTokenKey);
+
+const decode = (token: string): DecodedAuthData | null => {
+  const data = jwt.decode(token);
+
+  if (data === null) return null;
+  if (typeof data === 'string') return null;
+
+  return {
+    iat: data.iat,
+    email: data.email,
+  };
 };
-
-type DecodedData = Data & { iat: number };
-
-const create = (data: Data) => jwt.sign(data, config.secret.jwtTokenKey);
-
-const decode = (token: string) => jwt.decode(token) as (DecodedData | null);
 
 const tokenService = {
   create,

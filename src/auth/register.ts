@@ -2,13 +2,13 @@ import { RequestHandler } from 'express';
 import ErrorService from 'services/error-service';
 import { createAuthSuccessResponse } from './helpers/create-auth-success-response';
 import UserModel from './model';
-import { AuthSuccessResponse, RegistrationData } from './type';
+import { AuthSuccessResponse, RegistrationBody } from './type';
 import registrationDataValidationSchema from './validation-schemas/registration-data-validation-schema';
 
 export const register: RequestHandler<
   {},
   AuthSuccessResponse | ResponseError,
-  Partial<RegistrationData>,
+  Partial<RegistrationBody>,
   {}
 > = async (req, res) => {
   try {

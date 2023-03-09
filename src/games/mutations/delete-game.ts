@@ -3,12 +3,14 @@ import ErrorService, { ServerSetupError } from 'services/error-service';
 import GameService from '../model';
 import { GameViewModels } from '../types';
 
-export const deleteGame: RequestHandler<
+type DeleteGameHandler = RequestHandler<
   { id: string | undefined }, // Parametrai
   GameViewModels | ResponseError, // atsakymo tipas
   {}, // body - gaunami duomenys
   {} // QueryParams - duomenis siunčiant GET užklausas, pvz: ?min=1&max=18
-> = async (req, res) => {
+>;
+
+export const deleteGame: DeleteGameHandler = async (req, res) => {
   const { id } = req.params;
 
   try {

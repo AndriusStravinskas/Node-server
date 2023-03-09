@@ -4,12 +4,14 @@ import { GameViewModels, PartialGameData } from '../types';
 import PartialGameDataValidationSchema from '../validation-schema/partial-game-data-validation-schema';
 import GameService from '../model';
 
-export const updateGame: RequestHandler<
-  { id: string | undefined }, // Parametrai
-  GameViewModels | ResponseError, // atsakymo tipas
-  PartialGameData, // body - gaunami duomenys
-  {} // QueryParams - duomenis siunčiant GET užklausas, pvz: ?min=1&max=18
-> = async (req, res) => {
+type UpdateGameHandler = RequestHandler<
+{ id: string | undefined }, // Parametrai
+GameViewModels | ResponseError, // atsakymo tipas
+PartialGameData, // body - gaunami duomenys
+{} // QueryParams - duomenis siunčiant GET užklausas, pvz: ?min=1&max=18
+>;
+
+export const updateGame: UpdateGameHandler = async (req, res) => {
   const { id } = req.params;
 
   try {
