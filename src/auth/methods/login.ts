@@ -2,9 +2,9 @@ import { RequestHandler } from 'express';
 import ErrorService from 'services/error-service';
 import bCryptService from 'services/bcrypt-service';
 import UserModel from 'models/user-model';
-import { CredentialPartial, AuthSuccessResponse } from './type';
-import credentialValidationSchema from './validation-schemas/credentials-validation-schema';
-import { createAuthSuccessResponse } from './helpers/create-auth-success-response';
+import { CredentialPartial, AuthSuccessResponse } from '../type';
+import credentialValidationSchema from '../validation-schemas/credentials-validation-schema';
+import { createAuthSuccessResponse } from '../helpers/create-auth-success-response';
 
 export const login: RequestHandler<
   {},

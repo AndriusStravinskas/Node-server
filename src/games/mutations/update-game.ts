@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
-import ErrorService, { ServerSetupError } from 'services/error-service';
+import ErrorService, { ForbiddenError, ServerSetupError } from 'services/error-service';
+import UserModel from 'models/user-model';
 import { GameViewModels, PartialGameBody } from '../types';
 import PartialGameDataValidationSchema from '../validation-schema/partial-game-data-validation-schema';
 import GamesModel from '../model';
@@ -20,6 +21,12 @@ export const updateGame: UpdateGameHandler = async (req, res) => {
       req.body,
       { abortEarly: false },
     );
+    if (req.authData === undefined) throw new ServerSetupError();
+    const user = await UserModel.getUserByEmail(req.authData.email);
+    const game = await GamesModel.getGame(id);
+
+    if (user.role !== 'ADMIN' && user.id !== game.owner.id) throw new ForbiddenError();
+
     const updatedGame = await GamesModel.updateGame(id, partialGameData);
 
     res.status(200).json(updatedGame);
